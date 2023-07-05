@@ -11,7 +11,6 @@ tasks:
     init: |
       mkdir -p .vscode
       cp gitpod/settings.json .vscode/settings.json
-      git pull --unshallow  # need to force this else the prebuild fails
       git fetch --tags
       python -m pip install -ve . --no-build-isolation --config-settings editable-verbose=true
       pre-commit install
