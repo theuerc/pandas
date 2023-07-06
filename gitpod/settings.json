@@ -1,6 +1,5 @@
 {
     "restructuredtext.updateOnTextChanged": "true",
-    "restructuredtext.updateDelay": 300,
     "restructuredtext.linter.disabledLinters": ["doc8","rst-lint", "rstcheck"],
     "python.defaultInterpreterPath": "/usr/local/bin/python"
 }
