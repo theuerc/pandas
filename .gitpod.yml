@@ -4,19 +4,16 @@
 # -------------------------------------------------------------------------
 
 # assuming we use dockerhub: name of the docker user, docker image, tag, e.g. https://hub.docker.com/r/pandas/pandas-gitpod/tags
-image: pandas/pandas-gitpod:latest
+image:
+  file: Dockerfile
 tasks:
   - name: Prepare development environment
     init: |
       mkdir -p .vscode
-      cp gitpod/settings.json .vscode/settings.json
-      conda activate pandas-dev
-      git pull --unshallow  # need to force this else the prebuild fails
+      cp settings.json .vscode/settings.json
       git fetch --tags
-      python setup.py build_ext --inplace -j 4
-      echo "🛠 Completed rebuilding Pandas!! 🛠 "
+      python -m pip install -ve . --no-build-isolation --config-settings editable-verbose=true
       pre-commit install
-      echo "✨ Pre-build complete! You can close this terminal ✨ "
 
 # --------------------------------------------------------
 # exposing ports for liveserve
