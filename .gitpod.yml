@@ -4,13 +4,13 @@
 # -------------------------------------------------------------------------
 
 # assuming we use dockerhub: name of the docker user, docker image, tag, e.g. https://hub.docker.com/r/pandas/pandas-gitpod/tags
-image: 
+image:
   file: Dockerfile
 tasks:
   - name: Prepare development environment
     init: |
       mkdir -p .vscode
-      cp gitpod/settings.json .vscode/settings.json
+      cp settings.json .vscode/settings.json
       git fetch --tags
       python -m pip install -ve . --no-build-isolation --config-settings editable-verbose=true
       pre-commit install
