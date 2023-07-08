@@ -8,7 +8,7 @@ image:
   file: Dockerfile
 tasks:
   - name: Prepare development environment
-    init: |
+    before: |
       mkdir -p .vscode
       cp settings.json .vscode/settings.json
       git fetch --tags
